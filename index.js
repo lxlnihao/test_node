@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 app.get('/nihao', (req, res) => {
   res.send('Hello World!/nihao')
 })
-app.listen(8082, () => {
+app.listen(3000, () => {
 
-  console.log('web server running on port 8082')
+  console.log('web server running on port 3000')
 })
