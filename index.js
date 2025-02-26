@@ -2,6 +2,7 @@
 
 const {http} = require('./src/http')
 const schedule = require('node-schedule')
+const axios = require('axios')
 
 
   http.get('/', (req, res) => {
@@ -13,13 +14,15 @@ http.get('/nihao', (req, res) => {
 
 schedule.scheduleJob('*/9 * * * * *', ()=>{
 
-  console.log('每9秒执行一次')
+  
   const pushStr = `https://api.day.app/APZB3y4mjyP5KyrQchwdXc/推送内容`
-  http.get(pushStr, (req,res) => {
-
-    console.log('执行结果',JSON.stringify(res))
-    res.send('success')
-  }) 
+   axios.get(pushStr)
+   .then(response => {
+      console.log(response.data)
+    })
+   .catch(error => {
+      console.log(error)
+   })
 })
  
  
