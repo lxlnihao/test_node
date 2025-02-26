@@ -12,17 +12,23 @@ http.get('/nihao', (req, res) => {
   res.send('Hello World!/nihao')
 })
 
+http.get('/sendpush', (req, res) => {
+  const pushStr = `https://api.day.app/APZB3y4mjyP5KyrQchwdXc/推送内容`
+  axios.get(pushStr)
+  .then(response => {
+     console.log(response.data)
+     res.send('Hello World!/sendpush:response')
+   })
+  .catch(error => {
+     console.log(error)
+     res.send('Hello World!/sendpush:error')
+  })
+  
+})
 schedule.scheduleJob('*/9 * * * * *', ()=>{
 
   
-  const pushStr = `https://api.day.app/APZB3y4mjyP5KyrQchwdXc/推送内容`
-   axios.get(pushStr)
-   .then(response => {
-      console.log(response.data)
-    })
-   .catch(error => {
-      console.log(error)
-   })
+  
 })
  
  
