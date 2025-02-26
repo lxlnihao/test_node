@@ -13,7 +13,7 @@ http.get('/nihao', (req, res) => {
 })
 
 http.get('/sendpush', (req, res) => {
-  const pushStr = `https://api.day.app/APZB3y4mjyP5KyrQchwdXc/推送内容`
+  const pushStr = `https://api.day.app/APZB3y4mjyP5KyrQchwdXc/推送内容11`
   axios.get(pushStr)
   .then(response => {
      console.log(response.data)
