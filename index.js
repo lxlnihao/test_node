@@ -3,6 +3,7 @@
 const {http} = require('./src/http')
 const schedule = require('node-schedule')
 const axios = require('axios')
+const userController = require('./src/connect_mysql/userController');
 
 
   http.get('/', (req, res) => {
@@ -30,6 +31,15 @@ schedule.scheduleJob('*/9 * * * * *', ()=>{
   
   
 })
+
+http.get('/users', async (req, res) => {
+  try {
+    const users = await userController.getUsers();
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
  
  
 http.listen(3000, () => {
